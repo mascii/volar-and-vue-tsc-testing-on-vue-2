@@ -1,29 +1,25 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div>
+    <div>count: {{ count }}</div>
+    <div>count.value: {{ count.value }}</div>
+    <button type="button" @click="count += 1">+</button>
+    <button type="button" @click="count = '100'">set '100'</button>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref } from '@vue/composition-api';
 
-export default Vue.extend({
+const x: 0 = 1;
+
+export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
+  setup() {
+    const count = ref(0);
+
+    return {
+      count,
+    };
   }
 });
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
